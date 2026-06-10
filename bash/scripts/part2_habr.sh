@@ -4,9 +4,13 @@
 
 # for
 
-list="1 2 3 four five"
-for var in $list
-do
-	echo $var
-done
+# list="1 2 3 four five"
+# for var in $list
+# do
+# 	echo $var
+# done
 
+for var in first "the second" "the third" "I’ll do it"
+do
+	echo "This is: $var"
+done
