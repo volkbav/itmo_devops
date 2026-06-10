@@ -104,11 +104,26 @@
 # echo "$val1 is less than $val2"
 # fi
 
-val1=Likegeeks
-val2=likegeeks
-if [ "$val1" \> "$val2" ]
-then
-echo "$val1 is greater than $val2"
-else
-echo "$val1 is less than $val2"
-fi
+# val1=Likegeeks
+# val2=likegeeks
+# if [ "$val1" \> "$val2" ]
+# then
+# echo "$val1 is greater than $val2"
+# else
+# echo "$val1 is less than $val2"
+# fi
+
+
+# Проверка файлов
+# mydir=/home/$USER
+# if [ -d "$mydir" ]
+# then
+#     echo "The $mydir directory exists"
+#     cd $mydir
+#     echo "files in $mydir: " 
+#     echo "$(ls)" # вывод по строчно
+#     ls # вывод в одну строку 
+#     echo $(ls) # вывод в одну строку
+# else
+#     echo "The $mydir directory does not exist"
+# fi
