@@ -24,14 +24,22 @@
 
 
 # Обход файлов в директории
-dir=$HOME
-for file in $dir/* # в оригинале /home/likegeeks/*
+# dir=$HOME
+# for file in $dir/* # в оригинале /home/likegeeks/*
+# do
+#     if [ -d "$file" ]
+#     then
+#         echo "$file is a directory"
+#     elif [ -f "$file" ]
+#     then
+#         echo "$file is a file"
+#     fi
+# done
+
+
+# C-stile
+#!/bin/bash
+for (( i=1; i <= 10; i++ ))
 do
-    if [ -d "$file" ]
-    then
-        echo "$file is a directory"
-    elif [ -f "$file" ]
-    then
-        echo "$file is a file"
-    fi
+	echo "number is $i"
 done
