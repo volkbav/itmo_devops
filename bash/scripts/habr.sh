@@ -42,7 +42,13 @@
 
 #If-then
 
-if pwd
+# if pwd
+# then
+# echo "It works"
+# fi
+
+user=alex
+if grep $user /etc/passwd
 then
-echo "It works"
+echo "The user $user Exists"
 fi
