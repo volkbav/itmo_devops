@@ -64,13 +64,22 @@
 
 # elif
 
-user=anotherUser
-first_user=$USER
-if grep $user /etc/passwd
-then
-echo "The user $user Exists"
-elif ls /home/$first_user
-then
-echo "The user doesn’t exist but anyway there is a directory under /home/$first_user"
-fi
+# user=anotherUser
+# first_user=$USER
+# if grep $user /etc/passwd
+# then
+# echo "The user $user Exists"
+# elif ls /home/$first_user
+# then
+# echo "The user doesn’t exist but anyway there is a directory under /home/$first_user"
+# fi
 
+# Сравнение чисел
+
+val1=6
+if [ $val1 -gt 5 ]
+then
+echo "The test value $val1 is greater than 5"
+else
+echo "The test value $val1 is not greater than 5"
+fi
