@@ -40,15 +40,23 @@
 # echo $var2
 
 
-#If-then
+# if-then-else
 
 # if pwd
 # then
 # echo "It works"
 # fi
 
-user=alex
+# user=alex
+# if grep $user /etc/passwd
+# then
+# echo "The user $user Exists"
+# fi
+
+user=new_user
 if grep $user /etc/passwd
 then
 echo "The user $user Exists"
+else
+echo "The user $user doesn't exist"
 fi
