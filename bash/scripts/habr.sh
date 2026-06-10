@@ -34,7 +34,15 @@
 
 
 # math operations
-var1=$(( 5 + 5 ))
-echo $var1
-var2=$(( $var1 * 2 ))
-echo $var2
+# var1=$(( 5 + 5 ))
+# echo $var1
+# var2=$(( $var1 * 2 ))
+# echo $var2
+
+
+#If-then
+
+if pwd
+then
+echo "It works"
+fi
