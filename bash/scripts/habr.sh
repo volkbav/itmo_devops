@@ -76,10 +76,39 @@
 
 # Сравнение чисел
 
-val1=6
-if [ $val1 -gt 5 ]
+# val1=6
+# if [ $val1 -gt 5 ]
+# then
+# echo "The test value $val1 is greater than 5"
+# else
+# echo "The test value $val1 is not greater than 5"
+# fi
+
+
+# сравнение строк
+
+# user="likegeeks"
+# if [ $user = $USER ]
+# then
+# echo "The user $user  is the current logged in user"
+# else
+# echo "Ooops"
+# fi
+
+# val1="text"
+# val2="another text"
+# if [ "$val1" \> "$val2" ] # тут была ошибка (не было "")
+# then
+# echo "$val1 is greater than $val2"
+# else
+# echo "$val1 is less than $val2"
+# fi
+
+val1=Likegeeks
+val2=likegeeks
+if [ "$val1" \> "$val2" ]
 then
-echo "The test value $val1 is greater than 5"
+echo "$val1 is greater than $val2"
 else
-echo "The test value $val1 is not greater than 5"
+echo "$val1 is less than $val2"
 fi
