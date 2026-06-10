@@ -53,10 +53,24 @@
 # echo "The user $user Exists"
 # fi
 
-user=new_user
+# user=new_user
+# if grep $user /etc/passwd
+# then
+# echo "The user $user Exists"
+# else
+# echo "The user $user doesn't exist"
+# fi
+
+
+# elif
+
+user=anotherUser
+first_user=$USER
 if grep $user /etc/passwd
 then
 echo "The user $user Exists"
-else
-echo "The user $user doesn't exist"
+elif ls /home/$first_user
+then
+echo "The user doesn’t exist but anyway there is a directory under /home/$first_user"
 fi
+
