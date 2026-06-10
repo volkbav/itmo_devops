@@ -24,12 +24,17 @@
 # command
 
 # old version
-mydir=`pwd`
-echo "old version $mydir"
+# mydir=`pwd`
+# echo "old version $mydir"
 
-# useable
-mydir=$(pwd)
+# # useable
+# mydir=$(pwd)
 
-echo "new version $mydir"
+# echo "new version $mydir"
 
 
+# math operations
+var1=$(( 5 + 5 ))
+echo $var1
+var2=$(( $var1 * 2 ))
+echo $var2
