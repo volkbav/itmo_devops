@@ -22,3 +22,16 @@
 #     echo " $var"
 # done
 
+
+# Обход файлов в директории
+dir=$HOME
+for file in $dir/* # в оригинале /home/likegeeks/*
+do
+    if [ -d "$file" ]
+    then
+        echo "$file is a directory"
+    elif [ -f "$file" ]
+    then
+        echo "$file is a file"
+    fi
+done
