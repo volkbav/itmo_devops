@@ -10,7 +10,15 @@
 # 	echo $var
 # done
 
-for var in first "the second" "the third" "I’ll do it"
-do
-	echo "This is: $var"
-done
+# for var in first "the second" "the third" "I’ll do it"
+# do
+# 	echo "This is: $var"
+# done
+
+# file="file_habr"
+# IFS=$'\n'
+# for var in $(cat $file)
+# do
+#     echo " $var"
+# done
+

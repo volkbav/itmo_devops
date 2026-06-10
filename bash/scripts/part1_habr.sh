@@ -115,15 +115,15 @@
 
 
 # Проверка файлов
-# mydir=/home/$USER
-# if [ -d "$mydir" ]
-# then
-#     echo "The $mydir directory exists"
-#     cd $mydir
-#     echo "files in $mydir: " 
+mydir=/home/$USER
+if [ -d "$mydir" ]
+then
+    echo "The $mydir directory exists"
+    cd $mydir
+    echo "files in $mydir:" $(ls) 
 #     echo "$(ls)" # вывод по строчно
 #     ls # вывод в одну строку 
 #     echo $(ls) # вывод в одну строку
-# else
-#     echo "The $mydir directory does not exist"
-# fi
+else
+    echo "The $mydir directory does not exist"
+fi
