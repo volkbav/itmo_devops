@@ -38,8 +38,35 @@
 
 
 # C-stile
-#!/bin/bash
-for (( i=1; i <= 10; i++ ))
-do
-	echo "number is $i"
-done
+# for (( i=1; i <= 10; i++ ))
+# do
+# 	echo "number is $i"
+# done
+
+
+# while
+
+# var1=5
+# while [ $var1 -gt 0 ]
+# do
+# 	echo $var1
+# 	var1=$[ $var1 - 1 ] 
+# done
+
+
+# var1=5
+# while [ $var1 -gt 0 ]
+# do
+# echo $var1
+# 	var1=$((var1 - 1)) # это более современный подход
+# done
+
+# var1=5
+# while (( var1 > 0 ))
+# do
+#     echo "$var1"
+#     ((var1--))
+# done
+
+
+# files
