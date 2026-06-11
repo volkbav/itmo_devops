@@ -4,5 +4,6 @@ files=$(cat /etc/shells)
 # echo $files
 for f in $files
 do
-	echo $f
+	link=$(ls -l $f)
+	echo $link
 done
