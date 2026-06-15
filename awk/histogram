@@ -19,7 +19,7 @@ END {
         for (j; j<line_count[i]; j++)
         {
             printf "*"
-            
+            printf "\n"
         }
     }
 
