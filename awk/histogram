@@ -1,6 +1,26 @@
 # задача
 
-# BEGIN { for (i=1;i<200;i++)
-# print int (101*rand())
-# }
+BEGIN {
+    count=0
+}
 
+# body
+{
+    line_index = int($1/10)
+    
+
+    line_count[line_index]++
+}
+
+END {
+    for (i=0; i<10; i++)
+    {
+        printf "%2d - %2d: %3d", i*10, i*10+9, line_count[i]
+        for (j; j<line_count[i]; j++)
+        {
+            printf "*"
+            
+        }
+    }
+
+}
