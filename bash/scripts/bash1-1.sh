@@ -7,3 +7,4 @@ do
 	link=$(ls -l $f)
 	echo $link
 done
+
