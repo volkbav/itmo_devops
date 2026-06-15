@@ -6,13 +6,16 @@ BEGIN {
 
 # body
 {
-    line_index = int($1/10)
-    
-
-    line_count[line_index]++
+    if ($1 == 100)
+        line_count[10]++
+    else
+        line_index = int($1/10)
+        line_count[line_index]++
+    count++
 }
 
 END {
+    print "----BEGIN 1 part----"
     for (i=0; i<10; i++)
     {
         printf "%2d - %2d: %3d", i*10, i*10+9, line_count[i]
@@ -20,7 +23,20 @@ END {
         {
             printf " *"
         }
-    printf "\n"
+        printf "\n"
     }
+    printf "100: %7d", line_count[10]
+    for (i=0;i<line_count[10]; i++)
+    {
+        printf " *"
+    }
+    printf "\n"
+    printf "count = ", count
+    # printf count    
+    print "\n----END 1 part----\n"
+
+    print "----BEGIN 2 part----"
+    
+
 
 }
