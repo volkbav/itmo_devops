@@ -5,7 +5,8 @@ BEGIN {
     count=0
 }
 
-# body
+
+# body - begin
 {
     # проверка условия распределения чисел по десяткам
     if ($1 == 100)
@@ -19,6 +20,8 @@ BEGIN {
     }        
     count++
 }
+# body -end
+
 
 END {
     # задание 1 - вывод простой гистограммы
@@ -70,6 +73,4 @@ END {
     printf "count = %d\n", count
     # printf count    
     print "\n----END 2 part----\n"
-
-
 }
