@@ -1,6 +1,76 @@
-# задача
+# задание на зачет по курсу Bash
 
-# BEGIN { for (i=1;i<200;i++)
-# print int (101*rand())
-# }
+BEGIN {
+    # переменная для подсчета количества вхождений
+    count=0
+}
 
+
+# body - begin
+{
+    # проверка условия распределения чисел по десяткам
+    if ($1 == 100)
+    {
+        line_count[10]++
+    } 
+    else
+    {
+        line_index = int($1/10)
+        line_count[line_index]++
+    }        
+    count++
+}
+# body -end
+
+
+END {
+    # задание 1 - вывод простой гистограммы
+    print "----BEGIN 1 part----"
+    for (i=0; i<10; i++)
+    {
+        # формирование вывода
+        printf "%2d - %2d: %3d", i*10, i*10+9, line_count[i]
+        printf " "
+        for (j=0; j<line_count[i]; j++)
+        {
+            printf "*"
+        }
+        printf "\n"
+    }
+    printf "100: %7d", line_count[10]
+    printf " "
+    for (i=0;i<line_count[10]; i++)
+    {
+        printf "*"
+    }
+    printf "\n"
+    printf "count =  %d\n", count
+    # printf count    
+    print "\n----END 1 part----\n"
+
+
+    # задание 2 - нормализованная гистограмма
+    print "----BEGIN 2 part----"
+    for (i=0; i<10; i++)
+    {
+        normalize = int(line_count[i] / count * 100) 
+        printf "%2d - %2d: %3d", i*10, i*10+9, normalize
+        printf " "
+        for (j=0; j<normalize; j++)
+        {
+            printf "*"
+        }
+        printf "\n"
+    }
+    normalize = int(line_count[10] / count * 100)
+    printf "100: %7d", normalize
+    printf " "
+    for (i=0;i<normalize; i++)
+    {
+        printf "*"
+    }
+    printf "\n"
+    printf "count = %d\n", count
+    # printf count    
+    print "\n----END 2 part----\n"
+}
