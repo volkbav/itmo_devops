@@ -39,11 +39,11 @@ END {
     # printf count    
     print "\n----END 1 part----\n"
 
-    
+
     print "----BEGIN 2 part----"
     for (i=0; i<10; i++)
     {
-        normalize = int(line_count[i] / count) * 100
+        normalize = int(line_count[i] / count * 100) 
         printf "%2d - %2d: %3d", i*10, i*10+9, normalize
         for (j=0; j<normalize; j++)
         {
@@ -57,9 +57,9 @@ END {
         printf " *"
     }
     printf "\n"
-    printf "count = ", count
+    printf "count = %d\n", count
     # printf count    
-    print "\n----END 1 part----\n"
+    print "\n----END 2 part----\n"
 
 
 }
