@@ -27,19 +27,21 @@ END {
     {
         # формирование вывода
         printf "%2d - %2d: %3d", i*10, i*10+9, line_count[i]
+        printf " "
         for (j=0; j<line_count[i]; j++)
         {
-            printf " *"
+            printf "*"
         }
         printf "\n"
     }
     printf "100: %7d", line_count[10]
+    printf " "
     for (i=0;i<line_count[10]; i++)
     {
-        printf " *"
+        printf "*"
     }
     printf "\n"
-    printf "count = ", count
+    printf "count =  %d\n", count
     # printf count    
     print "\n----END 1 part----\n"
 
@@ -50,17 +52,19 @@ END {
     {
         normalize = int(line_count[i] / count * 100) 
         printf "%2d - %2d: %3d", i*10, i*10+9, normalize
+        printf " "
         for (j=0; j<normalize; j++)
         {
-            printf " *"
+            printf "*"
         }
         printf "\n"
     }
     normalize = int(line_count[10] / count * 100)
     printf "100: %7d", normalize
+    printf " "
     for (i=0;i<normalize; i++)
     {
-        printf " *"
+        printf "*"
     }
     printf "\n"
     printf "count = %d\n", count
