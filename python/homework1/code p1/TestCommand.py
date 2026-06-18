@@ -3,7 +3,7 @@
 
 # Применение команд Python
 
-import math
+# import math
 
 # help(math)
 # print(dir(math))
