@@ -140,3 +140,48 @@ print(dp)
 
 # Вложенность хранения данных
 
+'''1. Создайте словарь, реализующий требуемую структуру:'''
+rec = {
+    'name': {
+        'firstname': 'Bob',
+        'lastname': 'Smith'
+    },
+    'job': [
+        'dev',
+        'mgr'
+    ],
+    'age': 25
+}
+
+print(rec)
+
+
+'''2. Реализуйте вывод значения полного имени, отдельно имени firstname,
+список должностей.'''
+
+print(
+    f'Имя: {rec['name']['firstname']} {rec['name']['lastname']}; ',
+    f'должности: {rec['job'][0]}, {rec['job'][1]}'
+)
+
+
+'''3. Напишите инструкцию, расширяющую список должностей, например:
+rec[‘job’].append(‘janitor’)'''
+
+rec['job'].append('janitor')
+print(rec)
+
+
+'''4. Выведите полную информацию о персоне.'''
+
+def print_person(person):
+    for k, v in person.items():
+        if type(v) is dict:
+            print_person(v)
+        elif type(v) is list:
+            print(f'{k}: {[i for i in v]}')
+        else:
+            print(f'{k}: {v}')
+
+print('---')
+print_person(rec)
