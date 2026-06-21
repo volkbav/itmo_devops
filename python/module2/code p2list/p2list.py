@@ -174,6 +174,7 @@ print(rec)
 
 '''4. Выведите полную информацию о персоне.'''
 
+
 def print_person(person):
     for k, v in person.items():
         if type(v) is dict:
@@ -182,6 +183,7 @@ def print_person(person):
             print(f'{k}: {[i for i in v]}')
         else:
             print(f'{k}: {v}')
+
 
 print('---')
 print_person(rec)
