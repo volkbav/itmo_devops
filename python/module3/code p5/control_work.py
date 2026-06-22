@@ -12,3 +12,15 @@ weekday = [
     "Saturday", 
     "Sunday"]
 
+# ввод данных
+sales = {}
+sum_sales = 0
+for day in weekday:
+    sales[day] = int(input(f'введите кол-во продаж в {day}: '))
+    sum_sales += sales[day]
+
+
+sorted_sales = sorted(sales.items(), key=lambda x: x[1])
+
+for i in sorted_sales:
+    print(i)
