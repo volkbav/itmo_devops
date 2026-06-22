@@ -1,5 +1,5 @@
 # задание из Задания_Number_B
-# code "1B"
+# code "2B"
 
 # Project1_2B
 
