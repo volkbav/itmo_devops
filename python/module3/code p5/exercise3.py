@@ -1,12 +1,26 @@
 # Python_Руководство_my_р5_списки_циклы
 # code "p5"
 
-# Упражнение 2. Получение требуемых данных
+# Упражнение 3. Применение словаря для хранения данных
 
-s = 'ab12c59p7dq'
-digits = []
-for symbol in s:
-    if '1234567890'.find(symbol) != -1:  # find => -1, если не нашел значение
-        digits.append(int(symbol))
+user1 = {
+    'firstname': 'Ivan', 
+    'lastname': 'Петров',
+    'age': 19
+}
 
-print(digits)
+print(user1)
+
+fname = input('Enter your firstname: ')
+lname = input('Enter your lastname: ')
+age = int(input('Enter your age: '))
+
+user2 = dict(firstname=fname, lastname=lname, age=age)
+
+print(user2)
+
+users = []
+users.append(user1)
+users.append(user2)
+
+print(users)
