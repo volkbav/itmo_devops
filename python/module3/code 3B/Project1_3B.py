@@ -18,5 +18,5 @@ for i in range(list_len):
 print(num_list)
 
 new_list = ['High' if i < cutoff else 'Low' for i in num_list]
-print(f'cutof = {cutoff}\n', new_list)
+print(f'cutoff = {cutoff}\n', new_list)
 
