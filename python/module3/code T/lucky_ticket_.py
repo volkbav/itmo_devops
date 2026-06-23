@@ -7,3 +7,20 @@
 К примеру, билеты 666 666 и 252 135 — счастливые, а 123 456 — нет.
 Решение задачи:'''
 
+ticket = [
+    "666666",
+    "123456",
+    "123841"
+]
+
+
+def is_lucky(ticket):
+    n = len(ticket) // 2
+    s = 0
+    s += sum(int(ticket[i]) - int(ticket[n + 1]) for i in range(n))
+    return s == 0
+
+
+for i in ticket:
+    print(is_lucky(i))
+
