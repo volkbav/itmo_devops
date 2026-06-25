@@ -3,7 +3,6 @@
 
 # Упражнение 1. Поиск слова в текстовом файле
 import os
-from pathlib import Path
 
 # выбор пути для win/linux
 sep = os.path.sep  # разделители для win (\) и для unix (/)
