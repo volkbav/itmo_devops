@@ -14,10 +14,7 @@ filepath = os.path.join(folder, 'file.txt')
 with open(filepath, 'r', encoding='utf-8') as f:
     data = f.read()
 
-print(data)
-
 letters = sum(map(str.isalpha, data))
-print(letters)
 words = len(data.split())
-print(words)
-
+lines = data.count('\n') + 1
+print(f'Input file contains:\n{letters} letters\n{words} words\n{lines} lines')
