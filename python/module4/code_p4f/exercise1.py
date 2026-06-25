@@ -11,5 +11,17 @@ from pathlib import Path
 # folder = base_dir + '\\PythonPrim\\Textfiles'
 # print(folder)
 
-folder = os.getcwd() + '\\PythonPrim\\Textfiles'
+# выбор пути для win/linux
+if os.name == 'posix':
+    folder = os.getcwd() + '/PythonPrim/Textfiles'
+else:
+    folder = os.getcwd() + '\\PythonPrim\\Textfiles'
 print(folder)
+
+answ = set()
+search = input('Поиск: ')
+
+for filename in os.listdir(folder):
+    filepath = os.path.join(folder, filename)
+    print(filepath)
+
