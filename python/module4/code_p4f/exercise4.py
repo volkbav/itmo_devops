@@ -7,17 +7,35 @@
 from pathlib import Path
 from sys import argv
 
-name_dir = argv[1] if len(argv) > 1 else 'trash'
+name_dir = argv[1] if len(argv) > 1 else 'temp'
 # print(name_dir)
 
 base_dir = Path.cwd()
 # print(base_dir)
 
-folder_name = base_dir / name_dir
-if not folder_name.exists():
-    folder_name.mkdir()
+folder_path = base_dir / name_dir
+if not folder_path.exists():
+    folder_path.mkdir()
+
+
+def replace_txt_files(folder_path):
+    for f in base_dir.glob('*.txt'):
+        path_destination = folder_path / f.name
+        f.replace(path_destination)
+
 
 # создание тестовых файлов закомментировать после тестов
-# BEGIN CREATING TEST FILES
-for i in range(5):
-    (folder_name / f'file{i}.txt').touch()
+
+
+def create_files():
+
+    dir_name = base_dir
+    if not dir_name.exists():
+        dir_name.mkdir()
+    for i in range(5):
+        (dir_name / f'file{i}.txt').touch()
+
+
+# create_files()
+replace_txt_files(folder_path)
+
