@@ -6,3 +6,5 @@
 my_folder
 test_files
 temp
+
+__pycache__
