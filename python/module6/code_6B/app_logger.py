@@ -2,7 +2,7 @@ import logging
 
 _log_format = "%(asctime)s - [%(levelname)s] - %(name)s - (%(filename)s).%(funcName)s(%(lineno)d) - %(message)s"
 
-
+# record to file
 def get_file_handler():
     file_handler = logging.FileHandler("copy.log")
     file_handler.setLevel(logging.INFO)
@@ -10,6 +10,7 @@ def get_file_handler():
     return file_handler
 
 
+# set STDOUT
 def get_stream_handler():
     stream_handler = logging.StreamHandler()
     stream_handler.setLevel(logging.INFO)
@@ -17,6 +18,7 @@ def get_stream_handler():
     return stream_handler
 
 
+# Logger
 def get_logger(name):
     logger = logging.getLogger(name)
     logger.setLevel(logging.INFO)
