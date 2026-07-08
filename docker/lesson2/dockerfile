@@ -1,0 +1,6 @@
+FROM python
+WORKDIR /app
+RUN pip install flask
+ADD app.py
+EXPOSE 80
+CMD ["python", "app.py"]
