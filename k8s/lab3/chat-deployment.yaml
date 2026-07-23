@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chat-app
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: chat-app
+
+  template:
+    metadata:
+      labels:
+        app: chat-app
+
+    spec:
+      containers:
+      - name: chat-app
+
+        image: rayhimself/basic-redis-chat-app-api:latest
+
+        ports:
+        - containerPort: 3000
+
+        env:
+        - name: REDIS_ENDPOINT_URL
+          value: "redis:6379"
