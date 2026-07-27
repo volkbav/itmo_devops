@@ -8,12 +8,12 @@ spec:
 
   selector:
     matchLabels:
-      {{- toYaml .Values.app.labels | nindent 4 }}
+      {{ toYaml .Values.app.labels | nindent 6 }}
 
   template:
     metadata:
       labels:
-        {{- toYaml .Values.app.labels | nindent 8 }}
+        {{ toYaml .Values.app.labels | nindent 8 }}
 
     spec:
       containers:
