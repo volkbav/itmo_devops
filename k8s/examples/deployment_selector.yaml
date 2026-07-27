@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+    env: prod
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+        env: prod
+    spec:
+      tolerations:
+      - key: "key1"
+        operator: "Exists"
+        effect: "NoSchedule"
+# нод афинити
+      # affinity:
+      #   nodeAffinity:
+      #     requiredDuringSchedulingIgnoredDuringExecution:
+      #       nodeSelectorTerms:
+      #       - matchExpressions:
+      #         - key: env
+      #           operator: In
+      #           values:
+      #           - prod
+
+# селектор
+      # nodeSelector:
+      #   env: prod
+# под афинити
+      # affinity:
+      #   podAntiAffinity:
+      #     requiredDuringSchedulingIgnoredDuringExecution:
+      #     - labelSelector:
+      #           matchExpressions:
+      #           - key: env
+      #             operator: In
+      #             values:
+      #             - prod
+      #       topologyKey: kubernetes.io/hostname
+
+
+      containers:
+      - name: nginx2
+        image: nginx:1.14.1
+        ports:
+        - containerPort: 80
+ 
