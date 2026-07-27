@@ -1,0 +1,26 @@
+app:
+  name: chat-app-api
+  replicas: 2
+  image:
+    repo: rayhimself
+    name: basic-redis-chat-app-api
+    tag: latest
+  labels:
+    app: chat-app
+    env: prod
+  service:
+    type: LoadBalancer
+    enabled: true
+  env:
+    - name: version
+      value: 1.0.0
+    - name: env
+      value: prod
+redis: 
+  name: redis-cluster
+  port: 6379
+  replicas: 1
+  storageSize: 1Gi
+  image:
+    name: redis
+    tag: 8.0.3-alpine

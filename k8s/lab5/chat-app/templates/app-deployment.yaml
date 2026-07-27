@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.app.name }}
+
+spec:
+  replicas: {{ .Values.app.replicas }}
+
+  selector:
+    matchLabels:
+      {{- toYaml .Values.app.labels | nindent 4 }}
+
+  template:
+    metadata:
+      labels:
+        {{- toYaml .Values.app.labels | nindent 8 }}
+
+    spec:
+      containers:
+      - name: {{ .Values.app.name }}
+        image: {{ .Values.app.image.repo }}/{{ .Values.app.image.name }}:{{ .Values.app.image.tag }}
+        ports:
+        - containerPort: {{ .Values.app.port }}
+
+        env:
+        - name: REDIS_ENDPOINT_URL
+          value: "{{ .Values.redis.name }}:{{ .Values.redis.port }}"

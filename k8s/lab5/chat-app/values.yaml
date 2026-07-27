@@ -1,0 +1,33 @@
+app:
+  name: chat-app
+
+  replicas: 1
+
+  port: 8080
+
+  image:
+    repo: rayhimself
+    name: basic-redis-chat-app-api
+    tag: latest
+
+  labels:
+    app: chat-app
+    env: prod
+
+  service:
+    enabled: true
+    type: NodePort
+
+redis:
+
+  name: redis
+
+  replicas: 1
+
+  port: 6379
+
+  storageSize: 1Gi
+
+  image:
+    name: redis
+    tag: latest

@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.app.name }}
+spec:
+  replicas: {{ .Values.app.replicas }}
+  selector:
+    matchLabels:
+      {{- toYaml .Values.app.labels | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- toYaml .Values.app.labels | nindent 8 }}
+    spec:
+      containers:
+      - name: {{ .Values.app.name }}
+        image: {{ .Values.app.image.repo }}/{{ .Values.app.image.name }}:{{ .Values.app.image.tag }}
+        ports:
+        - containerPort: {{ .Values.app.port }}
+        env:
+        {{- range .Values.app.env }}
+        - name: {{ .name }}
+          value: {{ .value }}
+        {{- end }}
+        - name: REDIS_ENDPOINT_URL
+          value:  {{ .Values.redis.name }}:{{ .Values.redis.port }}
+---
+{{- if .Values.app.service.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.app.name }}
+spec:
+  type: {{ .Values.app.service.type }}
+  selector:
+    {{- toYaml .Values.app.labels | nindent 4 }}
+  ports:
+    - name: client
+      port: {{ .Values.app.port }}
+      targetPort: {{ .Values.app.port }}
+      protocol: TCP
+{{- end -}}
