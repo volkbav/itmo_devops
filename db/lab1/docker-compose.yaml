@@ -9,6 +9,7 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - ${DB_DATA_LOCATION}:/var/lib/postgresql/data
+      - ./tmp-db:/tmp-db
     shm_size: 128mb
     restart: always
     healthcheck:
@@ -32,9 +33,8 @@ services:
     configs:
       - source: pgadmin-servers
         target: /pgadmin4/servers.json
-        mode: 0444
+        mode: 0444      
 
 configs:
   pgadmin-servers:
     file: ./config/servers.json
-
