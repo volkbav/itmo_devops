@@ -19,7 +19,6 @@ devops-master
 # secrets
 .env
 pgpass
-servers.json
 
 # database
 postgres_data

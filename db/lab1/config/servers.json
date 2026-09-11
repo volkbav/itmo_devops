@@ -1,0 +1,13 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "Local Postgres",
+      "Group": "Servers",
+      "Host": "database",
+      "Port": 5432,
+      "MaintenanceDB": "itmo_lab",
+      "Username": "alex",
+      "PassFile": "/config/pgpass"
+    }
+  }
+}

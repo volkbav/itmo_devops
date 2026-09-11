@@ -26,19 +26,15 @@ services:
       PGADMIN_CONFIG_SERVER_MODE: 'False'
       # Don't require a "master" password after logging in
       PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: 'False'
+      PGADMIN_REPLACE_SERVERS_ON_STARTUP: 'True'
+      # psql password file
+      PGPASS_FILE: /config/pgpass
     configs:
-      - source: pgadmin-pgpass
-        target: /config/pgpass
-        uid: "5050"
-        gid: "5050"
-        mode: 0400
       - source: pgadmin-servers
-        target: /config/servers.json
+        target: /pgadmin4/servers.json
         mode: 0444
 
 configs:
-  pgadmin-pgpass:
-    file: ./config/pgpass
   pgadmin-servers:
     file: ./config/servers.json
 
