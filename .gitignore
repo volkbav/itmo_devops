@@ -15,3 +15,6 @@ __pycache__
 
 # from repo by teacher
 devops-master
+
+# secrets
+.env
