@@ -28,4 +28,20 @@ services:
 
       # Don't require a "master" password after logging in
       PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: 'False'
+    configs:
+  pgadmin-servers:
+    content: |
+      {
+        "Servers": {
+          "1": {
+            "Name": "Local Postgres",
+            "Group": "Servers",
+            "Host": "postgres",
+            "Port": 5432,
+            "MaintenanceDB": "postgres",
+            "Username": "postgres",
+            "PassFile": "/config/pgpass"
+          }
+        }
+      }
 
