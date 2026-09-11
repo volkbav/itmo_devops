@@ -19,8 +19,8 @@ vim config/servers.json
       "Group": "Servers",
       "Host": "database",  // должен совпадать с именем сервиса в compose
       "Port": 5432,
-      "MaintenanceDB": "itmo_lab",  // берем из .env значение POSTGRES_DB
-      "Username": "alex" //имя пользователя БД, берем из .env POSTGRES_USER
+      "MaintenanceDB": "db name",  // берем из .env значение POSTGRES_DB
+      "Username": "user" //имя пользователя БД, берем из .env POSTGRES_USER
     }
   }
 }
