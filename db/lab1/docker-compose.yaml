@@ -22,26 +22,23 @@ services:
       # Required by pgAdmin
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
-
       # Don't require the user to login
       PGADMIN_CONFIG_SERVER_MODE: 'False'
-
       # Don't require a "master" password after logging in
       PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: 'False'
     configs:
+      - source: pgadmin-pgpass
+        target: /config/pgpass
+        uid: "5050"
+        gid: "5050"
+        mode: 0400
+      - source: pgadmin-servers
+        target: /config/servers.json
+        mode: 0444
+
+configs:
+  pgadmin-pgpass:
+    file: ./config/pgpass
   pgadmin-servers:
-    content: |
-      {
-        "Servers": {
-          "1": {
-            "Name": "Local Postgres",
-            "Group": "Servers",
-            "Host": "postgres",
-            "Port": 5432,
-            "MaintenanceDB": "postgres",
-            "Username": "postgres",
-            "PassFile": "/config/pgpass"
-          }
-        }
-      }
+    file: ./config/servers.json
 
