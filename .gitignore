@@ -22,3 +22,5 @@ pgpass
 
 # database
 postgres_data
+tmp-db
+db/lab1/.env
