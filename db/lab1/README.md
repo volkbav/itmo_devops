@@ -43,11 +43,12 @@ http://localhost:5050
 
 6. импорт файла с бд
  - в папку `tmp-db` скопировать файл `*.sql`
- - зайти в контейнер с БД
+ - импортировать БД
  ```bash
- docker exec -it psql-pgadmin-1 bash
+docker exec -it psql-database-1 bash -c 'psql -U <username_database> -d <database_name> -f /tmp-db/*.sql'
  ```
  - импортировать файл в БД
+ _можно через баз_
  ```bash
  psql -U <username_database> -d <database_name> -f <*.sql>
  ```
@@ -58,5 +59,11 @@ http://localhost:5050
 
 Пример команды:
 ```bash
-psql -U alex -d itmo_lab -f demo-medium-20170815.sql
+docker exec -it psql-database-1 bash -c 'psql -U alex -d itmo_lab -f /tmp-db/demo-
+medium-20170815.sql'
+```
+
+_Можно без баша_:
+```bash
+docker exec -it psql-database-1 psql -U alex -d itmo_lab -f /tmp-db/demo-medium-20170815.sql
 ```
