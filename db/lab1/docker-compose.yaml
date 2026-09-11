@@ -5,8 +5,14 @@ services:
     image: postgres:${POSTGRES_VERSION}
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: {POSTGRES_PASSWORD}
-      POSTGRES_DB: {POSTGRES_DB}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - ${DB_DATA_LOCATION}:/var/lib/postgresql/data
+    shm_size: 128mb
+    restart: always
+    healthcheck:
+      disable: false
 
   pgadmin:
     image: dpage/pgadmin4:9.8
@@ -14,8 +20,8 @@ services:
       - 5050:80
     environment:
       # Required by pgAdmin
-      PGADMIN_DEFAULT_EMAIL: demo@example.com
-      PGADMIN_DEFAULT_PASSWORD: secret
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
 
       # Don't require the user to login
       PGADMIN_CONFIG_SERVER_MODE: 'False'
