@@ -5,7 +5,7 @@
 ```bash
 copy example.env .env
 ```
-3. правим файл `.config/servers.json
+3. правим файл `.config/servers.json`
 ```bash
 vim config/servers.json
 ```
