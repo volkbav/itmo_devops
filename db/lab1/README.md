@@ -9,7 +9,7 @@ copy example.env .env
 ```bash
 vim config/servers.json
 ```
->[!important] Важно!  
+>### Важно!  
 >необходимо убрать комментарии, если они есть в json
 ```json
 {
