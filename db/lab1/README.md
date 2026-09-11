@@ -40,3 +40,23 @@ docker compose up -d
 ```url
 http://localhost:5050
 ```
+
+6. импорт файла с бд
+ - в папку `tmp-db` скопировать файл `*.sql`
+ - зайти в контейнер с БД
+ ```bash
+ docker exec -it psql-pgadmin-1 bash
+ ```
+ - импортировать файл в БД
+ ```bash
+ psql -U <username_database> -d <database_name> -f <*.sql>
+ ```
+ где
+  - `<username_database>` - имя пользователя БД
+  - `<database_name>` имя БД
+  - `<*.sql>` - имя файла
+
+Пример команды:
+```bash
+psql -U alex -d itmo_lab -f demo-medium-20170815.sql
+```
