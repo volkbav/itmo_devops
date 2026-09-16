@@ -154,9 +154,27 @@ FROM bookings.ticket_flights
 WHERE fare_conditions = 'Economy'
 
 
---12. Использование Агрегатных функций с NULL
+-- 12. Использование Агрегатных функций с NULL
 SELECT
     COUNT(*)
 FROM bookings.flights
 WHERE COALESCE(actual_arrival::date, '2017-06-12') = '2017-06-12';
 
+SELECT
+    COUNT(actual_arrival)
+FROM bookings.flights
+WHERE COALESCE(actual_arrival::date, '2017-06-12') = '2017-06-12';
+
+SELECT
+    COUNT(DISTINCT departure_airport)
+FROM bookings.flights
+
+
+-- 13. Подведение итогов
+SELECT
+    COUNT(departure_airport),
+    COUNT(actual_arrival)
+FROM bookings.flights;
+
+
+-- 14. Использование предложения GROUP BY
