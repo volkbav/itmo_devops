@@ -134,5 +134,11 @@ FROM bookings.flights;
 AS Destination, - дали название столбцу
 */
 
+SELECT
+    book_ref,
+    substring(passenger_name from 1 for position(' ' in passenger_name)) as Name,
+    substring(passenger_name from position(' ' in passenger_name)) as Surname
+FROM bookings.tickets;
 
 
+-- 11. Агрегатные функции
