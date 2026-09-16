@@ -60,7 +60,7 @@ SELECT
     flight_no,
     scheduled_departure,
     scheduled_arrival,
-    COALESCE(actual_departure, '9999-12-31'),
+    COALESCE(actual_departure, '9999-12-31'), -- пучтые меняем на значение...
     COALESCE(actual_arrival, '9999-12-31')
 FROM bookings.flights
 WHERE departure_airport = 'DME'
@@ -76,3 +76,23 @@ SELECT
 FROM bookings.flights
 WHERE departure_airport = 'DME'
     AND arrival_airport = 'KZN';
+
+
+SELECT
+    scheduled_departure,
+    flight_no,
+    COALESCE(actual_departure::varchar, 'CANCELED') AS "Actual Departure"
+FROM bookings.flights
+WHERE departure_airport = 'DME'
+    AND arrival_airport = 'KZN';
+
+-- 8. Сортировка данных
+SELECT
+    scheduled_departure,
+    flight_no,
+    departure_airport,
+    arrival_airport
+FROM bookings.flights
+WHERE departure_airport = 'DME'
+ORDER BY arrival_airport;  -- сортировка по аэропорту прибытия
+
