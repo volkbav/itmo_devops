@@ -142,3 +142,21 @@ FROM bookings.tickets;
 
 
 -- 11. Агрегатные функции
+SELECT
+    AVG(amount) AS Average,
+    SUM(amount) AS Summary
+FROM bookings.ticket_flights
+WHERE fare_conditions = 'Economy';
+
+SELECT
+    COUNT(*)
+FROM bookings.ticket_flights
+WHERE fare_conditions = 'Economy'
+
+
+--12. Использование Агрегатных функций с NULL
+SELECT
+    COUNT(*)
+FROM bookings.flights
+WHERE COALESCE(actual_arrival::date, '2017-06-12') = '2017-06-12';
+
