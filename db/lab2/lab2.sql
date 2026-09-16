@@ -18,4 +18,17 @@ FROM bookings.tickets
 WHERE passenger_name LIKE 'V%'
     OR passenger_name LIKE 'E%'
 
---
+-- 5. Получение диапазона значения
+SELECT flight_no, scheduled_departure, scheduled_arrival,
+    departure_airport, arrival_airport
+FROM bookings.flights
+WHERE departure_airport = 'DME'
+    AND scheduled_departure between '2017-08-31' and '2017-09-01';
+
+-- 6. Получение списка значений
+SELECT flight_no, scheduled_departure, scheduled_arrival,
+    departure_airport, arrival_airport
+FROM bookings.flights
+WHERE departure_airport = 'DME'
+    AND arrival_airport IN ('LED', 'KZN')
+    AND scheduled_departure between '2017-08-31' and '2017-09-01';
