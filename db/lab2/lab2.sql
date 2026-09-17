@@ -178,3 +178,42 @@ FROM bookings.flights;
 
 
 -- 14. Использование предложения GROUP BY
+SELECT
+    departure_airport,
+    COUNT(actual_arrival)
+FROM
+    bookings.flights
+GROUP BY departure_airport;
+
+
+-- 15. Использования предложения HAVING
+SELECT
+    departure_airport,
+    COUNT(actual_arrival)
+FROM bookings.flights
+GROUP BY departure_airport
+HAVING COUNT(actual_arrival) < 50;
+
+
+-- 16. Как работают операторы ROLLUP и CUBE
+SELECT
+    departure_airport,
+    arrival_airport,
+    COUNT(actual_arrival)
+FROM bookings.flights
+GROUP BY ROLLUP (departure_airport, arrival_airport)
+/*
+ROLLUP - иерархическая группировка слева на право
+*/
+HAVING COUNT(actual_arrival) > 300;
+
+SELECT
+    departure_airport,
+    arrival_airport,
+    COUNT(actual_arrival)
+FROM bookings.flights
+GROUP BY CUBE (departure_airport, arrival_airport)
+/*
+CUBE - комбинация всех возможных вариантов на основе указанных столбцов
+*/
+HAVING COUNT(actual_arrival) > 300;
