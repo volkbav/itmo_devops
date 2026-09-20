@@ -1,5 +1,5 @@
 -- Задание 1
-CREATE TABLE "CustomerDetails"."сustomers"
+CREATE TABLE "CustomerDetails"."customers"
 (
     customerid bigint NOT NULL GENERATED ALWAYS AS IDENTITY,
     customertitleid integer NOT NULL,
@@ -15,10 +15,28 @@ CREATE TABLE "CustomerDetails"."сustomers"
     PRIMARY KEY (customerid)
 );
 
-ALTER TABLE IF EXISTS "CustomerDetails"."сustomers"
+ALTER TABLE IF NOT EXISTS "CustomerDetails"."customers"
     OWNER to alex;
 
-COMMENT ON TABLE "CustomerDetails"."сustomers"
+COMMENT ON TABLE "CustomerDetails"."customers"
     IS 'некое описание таблицы';
 
 -- Задание 2
+CREATE TABLE IF NOT EXISTS "TransactionDetails".transactions (
+    transactionid bigint GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1) 
+        PRIMARY KEY NOT NULL,
+    customerid bigint NOT NULL,
+    transactiontype int NOT NULL,
+    dateentered timestamp(0) NOT NULL,
+    amount numeric(18,5) NOT NULL,
+    referencedetails varchar(50) NULL,
+    notes varchar(50) NULL,
+    relatedshareid bigint NULL,
+    relatedproductid bigint NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "TransactionDetails".transactiontypes (
+    transactiontypesid int  GENERATED ALWAYS AS IDENTITY NOT NULL,
+    transactiondescription varchar(30) NOT NULL,
+    credittype boolean NOT NULL
+);
