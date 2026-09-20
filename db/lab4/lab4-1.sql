@@ -40,3 +40,5 @@ CREATE TABLE IF NOT EXISTS "TransactionDetails".transactiontypes (
     transactiondescription varchar(30) NOT NULL,
     credittype boolean NOT NULL
 );
+
+-- задание 3
