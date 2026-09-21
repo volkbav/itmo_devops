@@ -87,4 +87,20 @@ CREATE TABLE IF NOT EXISTS "ShareDetails".shares (
 
 -- задание 5
 -- выполнено в графике
+ALTER TABLE IF EXISTS "TransactionDetails".transactions
+    ADD CONSTRAINT fk_customers_transactions FOREIGN KEY (customerid)
+    REFERENCES "CustomerDetails".customers (customerid) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+CREATE INDEX IF NOT EXISTS fki_fk_customers_transactions
+    ON "TransactionDetails".transactions(customerid);
 
+-- задание 6
+ALTER TABLE "TransactionDetails".transactions
+ADD CONSTRAINT fk_transactions_shares FOREIGN KEY (relatedshareid)
+REFERENCES "ShareDetails".shares(shareid);
+
+-- исправление ошибки
+ALTER TABLE "ShareDetails".shares
+ADD CONSTRAINT pk_shares PRIMARY KEY (shareid);
