@@ -69,3 +69,22 @@ CREATE TABLE IF NOT EXISTS "CustomerDetails".financialproducts (
     productname varchar(50) NOT NULL
 );
 
+CREATE SCHEMA IF NOT EXISTS "ShareDetails" AUTHORIZATION alex;
+
+CREATE TABLE IF NOT EXISTS "ShareDetails".shareprices (
+    sharepriceid bigint GENERATED ALWAYS AS IDENTITY NOT NULL,
+    shareid bigint NOT NULL,
+    price numeric(18,5) NOT NULL,
+    pricedate timestamp(0) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "ShareDetails".shares (
+    shareid bigint GENERATED ALWAYS AS IDENTITY NOT NULL,
+    sharedesc varchar(50) NOT NULL,
+    sharetickerid varchar(50) NULL,
+    currentprice numeric(18,5) NOT NULL
+);
+
+-- задание 5
+-- выполнено в графике
+
