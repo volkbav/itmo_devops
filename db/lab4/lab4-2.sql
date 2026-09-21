@@ -35,3 +35,4 @@ DROP INDEX IF EXISTS "ShareDetails".ix_shareprices;
 CREATE UNIQUE INDEX IF NOT EXISTS ix_shareprices
     ON "ShareDetails".shareprices (ShareId ASC, PriceDate DESC, Price);
 
+-- задание 5
