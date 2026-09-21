@@ -24,6 +24,14 @@ CREATE INDEX IF NOT EXISTS ix_transactions_ttypes
     (transactiontype ASC);
 
 -- задание 3
-DROP INDEX "TransactionDetails".ix_transactiontypes;
+DROP  INDEX IF EXISTS "TransactionDetails".ix_transactiontypes;
 
 -- задание 4
+CREATE UNIQUE INDEX IF NOT EXISTS ix_shareprices
+    ON "ShareDetails".shareprices (ShareId ASC, PriceDate ASC);
+
+DROP INDEX IF EXISTS "ShareDetails".ix_shareprices;
+
+CREATE UNIQUE INDEX IF NOT EXISTS ix_shareprices
+    ON "ShareDetails".shareprices (ShareId ASC, PriceDate DESC, Price);
+
