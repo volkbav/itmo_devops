@@ -42,3 +42,30 @@ CREATE TABLE IF NOT EXISTS "TransactionDetails".transactiontypes (
 );
 
 -- задание 3
+-- 1
+ALTER TABLE "TransactionDetails".transactiontypes
+ADD affectcashbalance boolean NULL;
+-- 2
+ALTER TABLE "TransactionDetails".transactiontypes
+ALTER COLUMN affectcashbalance SET NOT NULL;
+-- 3
+ALTER TABLE "TransactionDetails".transactiontypes
+ADD CONSTRAINT PK_TransactionTypes PRIMARY KEY (transactiontypesid);
+
+-- задание 4
+CREATE TABLE IF NOT EXISTS "CustomerDetails".customersproducts (
+    customerfinancialproductid bigint GENERATED ALWAYS AS IDENTITY NOT NULL,
+    customerid bigint NOT NULL,
+    financialproductid bigint NOT NULL,
+    amounttocollect money NOT NULL,
+    frequency int NOT NULL,
+    lastcollected timestamp(0) NOT NULL,
+    lastcollection timestamp(0) NOT NULL,
+    renewable boolean NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "CustomerDetails".financialproducts (
+    productid bigint NOT NULL,
+    productname varchar(50) NOT NULL
+);
+
