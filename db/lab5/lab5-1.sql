@@ -190,3 +190,12 @@ VALUES
 ;
 
 -- задание 4
+SELECT * FROM "CustomerDetails".customers
+
+SELECT
+    customerfirstname AS "First Name"
+    , customerlastname AS "Last Name"
+    , clearedbalance Balance
+FROM "CustomerDetails".customers;
+
+-- задание 5
