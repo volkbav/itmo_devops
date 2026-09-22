@@ -136,3 +136,24 @@ ALTER COLUMN renewable
 SET DEFAULT false;
 
 -- 4
+INSERT INTO "CustomerDetails".customersproducts
+    (customerid
+    , financialproductid
+    , amounttocollect
+    , frequency
+    , lastcollected
+    , lastcollection
+    , renewable)
+VALUES(1, 1, -100, 0, '2023-08-24', '2023-08-24', false);
+
+INSERT INTO "CustomerDetails".customersproducts
+    (customerid
+    , financialproductid
+    , amounttocollect
+    , frequency
+    , lastcollected
+    , lastcollection
+    , renewable)
+VALUES(1, 1, 100, 0, '2023-08-24', '2023-08-20', false);
+
+-- Задание 3
