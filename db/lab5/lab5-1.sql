@@ -157,3 +157,36 @@ INSERT INTO "CustomerDetails".customersproducts
 VALUES(1, 1, 100, 0, '2023-08-24', '2023-08-20', false);
 
 -- Задание 3
+SELECT * FROM "CustomerDetails".customers
+
+INSERT INTO "CustomerDetails".customers (
+    customertitleid
+    , customerfirstname
+    , customerotherinitials
+    , customerlastname
+    , addressid
+    , accauntnumber
+    , accaunttypeid
+    , clearedbalance
+    , unclearedbalance
+)
+VALUES 
+    (3, 'Bernie', 'I', 'McGee', 314, 65368765, 1, 6653.11, 0.00),
+    (2, 'Julie', 'A', 'Dewson', 2134, 81625422, 1, 53.32, -12.21),
+    (1, 'Kristy', NULL, 'Hull', 4312, 96656334, 1, 1266.00, 10.32);
+
+SELECT * FROM "ShareDetails".shares
+
+INSERT INTO "ShareDetails".shares (
+    sharedesc
+    , sharetickerid
+    , currentprice
+)
+VALUES 
+    ('FAT-BELLY.COM', 'FBC', 45.20)
+    , ('NetRadio Inc', 'NRI', 29.79)
+    , ('Texas Oil Industries', 'TOI', 0.455)
+    , ('London Bridge Club', 'LBC', 1.46)
+;
+
+-- задание 4
