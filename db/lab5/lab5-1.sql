@@ -199,3 +199,103 @@ SELECT
 FROM "CustomerDetails".customers;
 
 -- задание 5
+--1
+UPDATE "CustomerDetails".customers
+SET customerlastname = 'Brodie'
+WHERE customerid = 4;
+-- check
+SELECT customerlastname 
+FROM "CustomerDetails".customers
+WHERE customerid = 4;
+
+--2
+DO 
+$$
+DECLARE
+    ValueToUpdate VARCHAR(30);
+BEGIN
+    ValueToUpdate := 'McGlynn';
+
+    UPDATE "CustomerDetails".customers
+    SET
+        customerlastname = ValueToUpdate
+        , clearedbalance = clearedbalance + unclearedbalance
+        , unclearedbalance = 0
+    WHERE customerlastname = 'Brodie';
+END
+$$
+
+-- 3
+-- not work
+DO 
+$$
+DECLARE
+    WrongDataType VARCHAR(20) := '4311.22';
+BEGIN
+    UPDATE "CustomerDetails".customers
+    SET
+        clearedbalance = WrongDataType
+    WHERE customerid = 4;
+END
+$$
+
+-- work
+DO 
+$$
+DECLARE
+    WrongDataType VARCHAR(20) := '4311,22';
+BEGIN
+    UPDATE "CustomerDetails".customers
+    SET
+        clearedbalance = WrongDataType::money
+    WHERE customerid = 4;
+END
+$$
+
+-- Задание 6
+CREATE TEMPORARY TABLE tmp_customers
+AS SELECT
+    customerid
+    , customerfirstname
+    , customerotherinitials
+    , customerlastname
+FROM "CustomerDetails".customers;
+
+SELECT * FROM tmp_customers;
+
+DELETE FROM tmp_customers
+WHERE customerid = 4;
+
+INSERT INTO tmp_customers (
+    customerfirstname
+    , customerotherinitials
+    , customerlastname
+)
+VALUES ('Dmitrij', 'J', 'Vetrov');
+
+DELETE FROM tmp_customers
+WHERE customerid IS NULL;
+
+ALTER TABLE tmp_customers
+ALTER COLUMN customerid
+SET NOT NULL;
+
+
+ALTER TABLE tmp_customers
+ALTER COLUMN customerid
+ADD GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 7);
+
+DELETE FROM tmp_customers;
+
+TRUNCATE TABLE tmp_customers;
+
+TRUNCATE TABLE tmp_customers RESTART IDENTITY;
+
+ALTER TABLE tmp_customers
+ALTER COLUMN customerid
+DROP IDENTITY;
+
+ALTER TABLE tmp_customers
+ALTER COLUMN customerid
+ADD GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1);
+
