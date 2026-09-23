@@ -95,5 +95,65 @@ JOIN "TransactionDetails".returntransactions(c.customerid) AS trans
 ;
 
 -- задание 3
+CREATE PROCEDURE "CustomerDetails".spu_inscustomer (
+    Firstname varchar(50)
+    , Lastname varchar(50)
+    , CustTitle int
+    , CustInitials varchar(10)
+    , AddressId int
+    , AccountNumber varchar(15)
+    , AccountTypeId int
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    INSERT INTO "CustomerDetails".customers (
+        customertitleid
+        , customerfirstname
+        , customerotherinitials
+        , customerlastname
+        , addressid
+        , accauntnumber
+        , accaunttypeid
+        , clearedbalance
+        , unclearedbalance
+    )
+    VALUES (
+        CustTitle
+        , Firstname
+        , CustInitials
+        , Lastname
+        , AddressId
+        , AccountNumber
+        , AccountTypeId
+        , 0
+        , 0
+    );
+END;
+$$
+;
+
+CALL "CustomerDetails".spu_inscustomer ('Henry', 'Williams', 1, NULL, 431, '22067531', 1);
+
+SELECT * FROM "CustomerDetails".customers
+WHERE customerfirstname = 'Henry'
+;
+
+CALL "CustomerDetails".spu_inscustomer (
+    CustTitle => 1
+    , Firstname => 'Julie'
+    , CustInitials => 'A'
+    , Lastname => 'Dewson'
+    , AddressId => 643
+    , AccountNumber => 'SS865'
+    , AccountTypeId => 7
+)
+;
+
+
+SELECT * FROM "CustomerDetails".customers
+WHERE customerfirstname = 'Julie'
+;
 
 -- задание 4
+
