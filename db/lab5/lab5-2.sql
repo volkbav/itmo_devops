@@ -29,3 +29,24 @@ INNER JOIN "ShareDetails".v_currentshares vcs
     ON sp.shareid = vcs.shareid
 ORDER BY vcs.sharedesc, sp.pricedate DESC;
 -- 3
+INSERT INTO "ShareDetails".shareprices (
+    shareid, price, pricedate
+)
+VALUES
+    (1, 2.155, '2023-08-01 10:10:00')
+    , (1, 2.2125, '2023-08-01 10:12:00')
+    , (1, 2.4175, '2023-08-01 10:16:00')
+    , (1, 2.21, '2023-08-01 10:22:00')
+    , (1, 2.17, '2023-08-01 14:54:00')
+    , (1, 2.34125, '2023-08-01 16:10:00')
+    , (2, 41.10, '2023-08-01 10:10:00')
+    , (2, 43.22, '2023-08-02 10:10:00')
+    , (2, 45.20, '2023-08-03 10:10:00')
+
+INSERT INTO "ShareDetails".shares
+    (sharedesc, sharetickerid, currentprice)
+VALUES ('FAT-BELLY.COM', 'FBC', 45.2000)
+
+-- 4
+SELECT * FROM "ShareDetails".v_shareprices
+
