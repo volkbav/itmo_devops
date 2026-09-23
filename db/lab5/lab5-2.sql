@@ -50,3 +50,21 @@ VALUES ('FAT-BELLY.COM', 'FBC', 45.2000)
 -- 4
 SELECT * FROM "ShareDetails".v_shareprices
 
+-- задание 3
+CREATE VIEW "CustomerDetails".v_custtrans
+AS
+SELECT
+    c.accauntnumber
+    , c.customerfirstname
+    , c.customerotherinitials
+    , tt.transactiondescription
+    , t.dateentered
+    , t.amount
+    , t.referencedetails
+FROM "CustomerDetails".customers AS c
+JOIN "TransactionDetails".transactions AS t
+    ON t.customerid = c.customerid
+JOIN "TransactionDetails".transactiontypes AS tt
+    ON tt.transactiontypesid = t.transactiontype
+ORDER BY c.accauntnumber ASC, t.dateentered DESC;
+
