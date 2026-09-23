@@ -123,3 +123,34 @@ ALTER TABLE "CustomerDetails".customers
 ALTER COLUMN customerfirstname TYPE varchar(100);
 
 -- задание 5
+DROP VIEW IF EXISTS "CustomerDetails".v_custfinproducts;
+
+CREATE MATERIALIZED VIEW "CustomerDetails".v_custfinproducts
+AS
+SELECT
+    c. customerfirstname || ' ' || c.customerlastname AS customerlastname
+    , c.accauntnumber
+    , fp.productname
+    , cp.amounttocollect
+    , cp.frequency
+    , cp.lastcollected
+FROM "CustomerDetails".customers As c
+JOIN "CustomerDetails".customersproducts AS cp
+    ON cp.customerid = c.customerid
+JOIN "CustomerDetails".financialproducts AS fp
+    ON fp.productid = cp.financialproductid
+;
+
+SELECT * FROM "CustomerDetails".v_custfinproducts;
+
+UPDATE "CustomerDetails".customers
+SET customerlastname = 'Brusten'
+WHERE customerlastname = 'Brust';
+
+SELECT * FROM "CustomerDetails".customers;
+
+SELECT * FROM "CustomerDetails".v_custfinproducts;
+
+REFRESH MATERIALIZED VIEW "CustomerDetails".v_custfinproducts;
+SELECT * FROM "CustomerDetails".v_custfinproducts;
+
