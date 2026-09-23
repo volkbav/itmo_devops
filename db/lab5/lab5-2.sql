@@ -68,3 +68,58 @@ JOIN "TransactionDetails".transactiontypes AS tt
     ON tt.transactiontypesid = t.transactiontype
 ORDER BY c.accauntnumber ASC, t.dateentered DESC;
 
+-- задание 4
+-- 1
+INSERT INTO "CustomerDetails".financialproducts (
+    productid, productname
+)
+VALUES
+    (1, 'Regular Saving')
+    , (2, 'Bonds Account')
+    , (3, 'Share Account')
+    , (4, 'Life Insurance')
+;
+
+INSERT INTO "CustomerDetails".customersproducts (
+    customerid
+    , financialproductid
+    , amounttocollect
+    , frequency
+    , lastcollected
+    , lastcollection
+    , renewable
+)
+VALUES
+    (1, 1, 200, 1, '2021-08-31', '2035-08-31', false)
+    , (1, 2, 50, 1, '2023-08-24', '24 March 2025', false)
+    , (2, 4, 150, 3, '2023-08-20', '2025-08-20', true)
+    , (3, 3, 500, 0, '2023-08-24', '2025-08-24', true)
+;
+
+-- 2
+DROP VIEW IF EXISTS "CustomerDetails".v_custfinproducts;
+
+CREATE VIEW "CustomerDetails".v_custfinproducts
+AS
+SELECT
+    c. customerfirstname || ' ' || c.customerlastname AS customerlastname
+    , c.accauntnumber
+    , fp.productname
+    , cp.amounttocollect
+    , cp.frequency
+    , cp.lastcollected
+FROM "CustomerDetails".customers As c
+JOIN "CustomerDetails".customersproducts AS cp
+    ON cp.customerid = c.customerid
+JOIN "CustomerDetails".financialproducts AS fp
+    ON fp.productid = cp.financialproductid
+;
+
+-- 3
+SELECT * FROM "CustomerDetails".v_custfinproducts;
+
+-- 4
+ALTER TABLE "CustomerDetails".customers
+ALTER COLUMN customerfirstname TYPE varchar(100);
+
+-- задание 5
