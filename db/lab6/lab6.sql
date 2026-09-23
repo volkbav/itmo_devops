@@ -205,3 +205,60 @@ WHERE customerid = 1
 ;
 
 -- 4
+SELECT clearedbalance FROM "CustomerDetails".customers
+WHERE customerid = 1
+;
+
+INSERT INTO "TransactionDetails".transactions (
+    customerid
+    , transactiontype
+    , amount
+    , relatedproductid
+    , dateentered
+)
+VALUES (1, 3, 200, 1, current_date)
+;
+
+-- 5
+CREATE OR REPLACE FUNCTION "CustomerDetails".fn_instransactions()
+RETURNS TRIGGER
+AS $$
+    BEGIN
+        UPDATE "CustomerDetails".customers
+        SET clearedbalance = clearedbalance + COALESCE(
+            (
+                SELECT
+                    CASE
+                        WHEN tt.credittype = false THEN (i.amount * -1)::money
+                        ELSE (i.amount)::money
+                    END
+                FROM NEW AS i
+                JOIN "TransactionDetails".transactiontypes AS tt
+                    ON tt.transactiontypesid = i.transactiontype
+                WHERE tt.affectcashbalance = true
+            )
+            ,0::money
+        )
+        WHERE customerid = NEW.customerid;
+        RETURN NULL;
+    END;
+$$
+LANGUAGE plpgsql;
+
+SELECT clearedbalance FROM "CustomerDetails".customers
+WHERE customerid = 1
+;
+
+INSERT INTO "TransactionDetails".transactions (
+    customerid
+    , transactiontype
+    , amount
+    , relatedproductid
+    , dateentered
+)
+VALUES (1, 3, 200, 1, current_date)
+;
+
+SELECT clearedbalance FROM "CustomerDetails".customers
+WHERE customerid = 1
+;
