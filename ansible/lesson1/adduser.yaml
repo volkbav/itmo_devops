@@ -1,0 +1,28 @@
+---
+- hosts: yandexcloud
+  become: yes
+  become_user: root
+  tasks:
+  - name: "Add user user1 with password pass123"
+    user: 
+      name: alex
+      password: "$6$hvutAOd7AYyy129k$BpzWhDf6dS9.SFrOz8RiXVPF8UGMuJkb12WYpuHDuEHLQrMJgiGjJeptmSK388FBksz/nwEv0toRVO5XWhKoY0"
+    
+  - name: "echo passwd"
+    shell: cat /etc/passwd
+
+  - name: Create .ssh directory
+    ansible.builtin.file:
+      path: /home/alex/.ssh
+      state: directory
+      owner: alex
+      group: alex
+      mode: '700'
+
+  - name: Copy ssh-key
+    ansible.builtin.copy:
+      src: /home/alex/.ssh/autumn2026.pub
+      dest: /home/alex/.ssh/authorized_keys
+      owner: alex
+      group: alex
+      mode: '600'
