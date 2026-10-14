@@ -1,6 +1,6 @@
 - name: Hello World Play
   # host - must have
-  hosts: localhost
+  hosts: yandexcloud
   tasks:
     - debug: msg="Hello world! - debug msg"
     - shell: echo "Hello world!"
