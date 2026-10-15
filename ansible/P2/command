@@ -2,3 +2,4 @@ ansible-doc ping
 
 ansible yandex -m ping -i /home/alex/projects/itmo_devops/ansible/P2/inventory.inv
 
+ansible yandex -m command -a "echo 'hello world'" -i /home/alex/projects/itmo_devops/ansible/P2/inventory.inv -vvv
