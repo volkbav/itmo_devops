@@ -3,3 +3,9 @@ ansible-doc ping
 ansible yandex -m ping -i /home/alex/projects/itmo_devops/ansible/P2/inventory.inv
 
 ansible yandex -m command -a "echo 'hello world'" -i /home/alex/projects/itmo_devops/ansible/P2/inventory.inv -vvv
+
+ansible yandex \
+  -m copy \
+  -a "src=/home/alex/projects/itmo_devops/ansible/P2/copy_file.txt dest=~/copy_file.txt" \
+  -i /home/alex/projects/itmo_devops/ansible/P2/inventory.inv
+
