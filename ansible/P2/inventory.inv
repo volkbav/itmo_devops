@@ -1,2 +1,2 @@
 [yandexcloud]
-host1 ansible_ssh_host=93.77.162.150 ansible_ssh_user=student ansible_ssh_private_key_file=/home/alex/.ssh/autumn2026
+yandex ansible_ssh_host=93.77.162.150 ansible_ssh_user=student ansible_ssh_private_key_file=/home/alex/.ssh/autumn2026

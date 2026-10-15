@@ -1,0 +1,4 @@
+ansible-doc ping
+
+ansible yandex -m ping -i /home/alex/projects/itmo_devops/ansible/P2/inventory.inv
+
