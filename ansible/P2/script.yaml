@@ -1,0 +1,23 @@
+- hosts: yandex
+  
+  vars:
+    dir_path: /home/alex/test_command
+    file_create: "{{ dir_path }}/myfiles"
+    copy_file: /home/alex/projects/itmo_devops/ansible/P2/copy_file.txt
+  
+  tasks:
+    - name: create dir
+      file:
+        path: "{{ dir_path }}"
+        state: directory
+        owner: alex
+        group: alex
+        mode: '0755'
+
+    - name: copy file
+      copy:
+        src: "{{ copy_file }}"
+        dest: "{{ file_create }}"
+        owner: alex
+        group: alex
+        mode: '0644'

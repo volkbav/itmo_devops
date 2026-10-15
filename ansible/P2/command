@@ -1,11 +1,22 @@
 ansible-doc ping
 
+
 ansible yandex -m ping -i /home/alex/projects/itmo_devops/ansible/P2/inventory.inv
 
+# Тестируем ad-hoc команду модули ping, command, copy
 ansible yandex -m command -a "echo 'hello world'" -i /home/alex/projects/itmo_devops/ansible/P2/inventory.inv -vvv
+
 
 ansible yandex \
   -m copy \
   -a "src=/home/alex/projects/itmo_devops/ansible/P2/copy_file.txt dest=~/copy_file.txt" \
   -i /home/alex/projects/itmo_devops/ansible/P2/inventory.inv
 
+# Тестируем удаление файла (ad-hoc команда) и перезапуск плейбука
+ansible yandex -i inventory.inv -m file -a "path=/home/alex/test_command state=absent"
+# -m file — модуль для управления файлами и каталогами.
+# path — путь к удаляемому объекту.
+# state=absent — удалить файл или каталог, если он существует.
+
+# Проверяем удаление
+ansible yandex -i inventory.inv -m stat -a "path=/home/alex/test_command"
