@@ -1,0 +1,9 @@
+- hosts: yandex
+  tasks:
+    - name: Get kernel version
+      command: uname -r
+      register: kernel_version
+
+    - name: Show kernel version
+      debug:
+        var: kernel_version.stdout
