@@ -1,0 +1,33 @@
+# Посмотреть все факты
+ansible all -i ./inventory.inv -m setup
+
+# посмотреть только имя хоста
+ansible all -i ./inventory.inv \
+  -m ansible.builtin.setup \
+  -a 'filter=ansible_hostname'
+
+# сведения о дистрибутиве
+ansible all -i ./inventory.inv \
+  -m ansible.builtin.setup \
+  -a 'filter=ansible_distribution*'
+
+ansible all -i ./inventory.inv \
+  -m ansible.builtin.setup \
+  -a 'filter=ansible_distribution'
+
+Посмотреть группы фактов
+ansible all -i ./inventory.inv \
+  -m ansible.builtin.setup \
+  -a 'gather_subset=network'
+
+ansible all -i ./inventory.inv \
+  -m ansible.builtin.setup \
+  -a 'gather_subset=network' | more
+
+ansible all -i ./inventory.inv \
+  -m ansible.builtin.setup \
+  -a 'filter=ansible_interfaces'
+
+ansible fedora -i ./inventory.inv \
+  -m ansible.builtin.setup \
+  -a 'filter=ansible_all_ipv4_addresses'
