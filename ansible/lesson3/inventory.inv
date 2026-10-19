@@ -1,5 +1,5 @@
 [yandexcloud]
-ubuntu ansible_ssh_host=93.77.165.176
+ubuntu ansible_ssh_host=93.77.162.53
 fedora ansible_ssh_host=84.201.151.140 
 [yandexcloud:vars]
 ansible_ssh_user=student 
