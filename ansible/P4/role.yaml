@@ -1,0 +1,7 @@
+---
+- name: Helloworld play(book)
+  hosts: yandexcloud
+  roles:
+    - test_role
+  become: yes
+  gather_facts: true
