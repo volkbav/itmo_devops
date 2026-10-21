@@ -22,3 +22,32 @@
 - [x] Выведем все сетевые адаптеры двух машин с их IP адресами
 - [x] Установим custom-fact хотя бы на fedora
 - [x] Получить такой custom -fact (debug)
+
+## P4
+из этого сделать роли.
+Либо взять с гитлаба
+```
+---
+- name: Определение семейства Linux и установка Joe
+hosts: hello-world
+become: yes
+gather_facts: true
+
+tasks:
+- name: Вывести семейство Linux
+ansible.builtin.debug:
+msg: "Система принадлежит к семейству: {{ ansible_facts['os_family'] }}"
+
+- name: Установить joe через apt (для Debian/Ubuntu)
+ansible.builtin.apt:
+name: joe
+state: present
+update_cache: yes
+when: ansible_facts['os_family'] == "Debian"
+
+- name: Установить joe через dnf/yum (для RedHat)
+ansible.builtin.dnf:
+name: joe
+state: present
+when: ansible_facts['os_family'] == "RedHat"
+```
