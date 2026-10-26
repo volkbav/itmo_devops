@@ -10,7 +10,7 @@ docker run -d \
       --restart=always \
       --name victoria-metrics \
       -p 8428:8428 \
-      -v /root/prometheus.yml:/etc/victoriametrics/prometheus.yml \
+      -v ./prometheus.yml:/etc/victoriametrics/prometheus.yml \
       victoriametrics/victoria-metrics:latest \
       -promscrape.config=/etc/victoriametrics/prometheus.yml
 
