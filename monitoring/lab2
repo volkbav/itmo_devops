@@ -1,0 +1,11 @@
+docker rm -f vmalert
+
+docker run -d \
+  --name vmalert \
+  --restart=always \
+  --network host \
+  -v "$(pwd)/alert.rules.yml:/etc/vmalert/alert.rules.yml:ro" \
+  victoriametrics/vmalert:latest \
+  -rule=/etc/vmalert/alert.rules.yml \
+  -datasource.url=http://127.0.0.1:8428 \
+  -notifier.blackhole

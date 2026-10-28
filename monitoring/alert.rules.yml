@@ -1,0 +1,18 @@
+groups:
+  - name: linux-alerts
+    interval: 30s
+    rules:
+      - alert: HighMemoryUsage
+        expr: |
+          100 * (
+            1 -
+            node_memory_MemAvailable_bytes
+            /
+            node_memory_MemTotal_bytes
+          ) > 80
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High memory usage"
+          description: "Memory usage is above 80% on {{ $labels.instance }}"
